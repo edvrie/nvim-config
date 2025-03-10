@@ -21,6 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Neovide configs test
+if vim.g.neovide then
+  print("Foo:")
+end
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -29,7 +34,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+ -- install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
@@ -46,4 +51,7 @@ vim.keymap.set('n', '<leader>nt', ':Neotree filesystem reveal left<CR>')
 vim.keymap.set('n', '<leader>cnt', ':Neotree filesystem close <CR>')
 
 -- Keymaps
-vim.keymap.set('n', '<Space>', '<Nop>', { noremap = true, silent = true}) 
+vim.keymap.set('n', '<Space>', '<Nop>', { noremap = true, silent = true})
+vim.keymap.set('n', 'gl', '$', {noremap = true, desc = 'Goto line end'})
+vim.keymap.set('n', 'gh', '_', {noremap = true, desc = 'Goto line start'})
+vim.api.nvim_set_keymap("n", "<C-c>", "gcc", { noremap = false, silent = true })
